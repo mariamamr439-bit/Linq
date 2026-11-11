@@ -1,11 +1,13 @@
 ﻿using LINQ.DataSources;
 using LINQ.Models;
+using System.Linq.Expressions;
 namespace Linq
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            #region Linq1
             //Q1
             var seafoodProducts = Source.ProductList.Where(p => p.Category == "Seafood");
             foreach (var product in seafoodProducts)
@@ -25,13 +27,13 @@ namespace Linq
                 Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
             }
             //Q4
-            var productsInRange = Source.ProductList.Where(p => p.UnitPrice > 10 && p.UnitPrice < 30);
+            var productsInRange = Source.ProductList.Where(p => p.UnitPrice >= 10 && p.UnitPrice <= 30);
             foreach (var product in productsInRange)
             {
                 Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
             }
             //Q5
-            var productsCond = Source.ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
+            var productsCond = Source.ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Spices & Condiments");
             foreach (var product in productsCond)
             {
                 Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
@@ -85,7 +87,7 @@ namespace Linq
             //Q11 same as Q7
             //Q12
 
-            string[] Arr = { "aPPLE", "bAnaNa", "Cherry", "daTe", "eldeRberry" };
+            string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr","cHeRry" };
             var sortedArray = Arr.OrderBy(word => word.Length)
                 .ThenBy(word => word, StringComparer.OrdinalIgnoreCase);
             foreach (var word in sortedArray)
@@ -99,6 +101,8 @@ namespace Linq
             {
                 Console.WriteLine(digit);
             }
+            #endregion
+            
         }
     }
 }
